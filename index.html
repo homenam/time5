@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Time</title>
+	<style type="text/css">
+		.div_time{
+			width: 350px;
+			height: auto;
+			border-style: none;
+			border-radius: 5px;
+			position: absolute;
+			left: 50%;
+			top: 25%;
+			transform: translateX(-50%);
+			background-color: red;
+			align-items: center;
+			box-shadow: 1px 1px 14px;
+		}
+
+		#div_test{
+			width: 90%;
+			height: auto;
+			border-style: none;
+			border-radius: 5px;
+			box-shadow: 1px 1px 13px;
+			background-color: white;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			text-align: center;
+
+		}
+		.div_date{
+			width: 90%;
+			margin: auto;
+			text-align: center;
+		}
+
+		#div_input{
+			width: 90%;
+			height: auto;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			text-align: center;
+			align-items: center;
+
+		}
+		#input_1{
+			width: 50px;
+			height: 40px;
+			border-style: solid;
+			border-radius: 5px;
+			margin: 15px;
+		}
+		#p_data{
+			font-weight: bold;
+		}
+
+
+
+		
+	</style>
+</head>
+<body>
+
+	<div class="div_time" id="time_1">
+		<div id="div_test">
+			<h1 id="h1_test">
+				11:00
+			</h1>
+			
+		</div>
+		<div class="div_date">
+			<p id="p_data">
+				11-5-2020
+			</p>
+		</div>
+		<div id="div_input">
+		<input id="input_1"  type="color"   >
+	</div>
+	
+	</div>
+
+
+	<script type="text/javascript">
+		
+
+		function function_name() {
+			let data=new Date();
+			let h1_test=document.getElementById('h1_test') ;
+			h1_test.innerHTML = data.getHours() +":"+data.getMinutes()+":"+data.getSeconds();
+
+			//h1_test end 
+
+			let p_data=document.getElementById('p_data') ;
+
+			p_data.innerHTML = data.getDay()+"-"+ parseInt(data.getMonth()  + 1)+"-"+data.getFullYear() ;
+
+
+
+
+		
+
+		}
+
+		onload=()=>{
+
+			function_name();
+			colorfunction();
+			let xxx=localStorage.getItem("backcolor");
+			console.log(xxx)
+			let time_1 =document.getElementById("time_1");
+			time_1.style.backgroundColor=xxx;
+
+
+		
+
+
+
+		setInterval(function(){
+
+			function_name();
+
+		},3000);
+
+
+
+			
+		}
+
+		function colorfunction(){
+
+			let input_1 =document.getElementById("input_1");
+
+			input_1.onchange =() =>{
+			let input_1 =document.getElementById("input_1").value;
+			let time_1 =document.getElementById("time_1");
+			time_1.style.backgroundColor=document.getElementById("input_1").value;
+			localStorage.setItem("backcolor",input_1);
+
+			document.body.style.backgroundColor=document.getElementById("input_1").value;
+
+			console.log(input_1);
+
+}
+			
+
+
+
+		}
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
